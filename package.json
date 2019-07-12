@@ -1,0 +1,38 @@
+{
+  "name": "pigeon",
+  "version": "1.0.0",
+  "description": "Sentry Client for Cloudflare workers",
+  "main": "index.js",
+  "author": "Tom Lianza",
+  "license": "ISC",
+  "scripts": {
+    "test": "mocha --require @babel/register --require regenerator-runtime test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tlianza/pigeon.git"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.0",
+    "@babel/preset-env": "^7.5.0",
+    "@babel/register": "^7.4.4",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "node-fetch": "^2.6.0",
+    "regenerator-runtime": "^0.13.2"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "dependencies": {
+    "@sentry/core": "^5.5.0",
+    "@sentry/hub": "^5.5.0",
+    "@sentry/minimal": "^5.5.0",
+    "@sentry/types": "^5.5.0",
+    "@sentry/utils": "^5.5.0",
+    "stack-trace": "0.0.10"
+  }
+}
