@@ -210,9 +210,10 @@ class PigeonBackend extends BaseBackend {
         const frames = stack.map(frame => {
             const parsedFrame = {
                 colno: frame.columnNumber,
-                filename: frame.fileName || '',
+                filename: frame.fileName ? 'app:///' + frame.fileName : null,
                 function: this.getFunction(frame),
                 lineno: frame.lineNumber,
+                platform: 'javascript'
             };
             return parsedFrame;
         });
