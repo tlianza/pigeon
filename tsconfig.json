@@ -9,9 +9,7 @@
     "alwaysStrict": true,
     "noImplicitAny": true,
     "baseUrl": ".",
-    "lib": ["esnext", "webworker"],
-    "types": ["@sentry/core"]
+    "lib": ["esnext", "webworker"]
   },
-  "files": ["index.d.ts"],
-  "exclude": ["node_modules"]
+  "files": ["index.d.ts"]
 }
