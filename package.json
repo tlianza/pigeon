@@ -1,6 +1,6 @@
 {
-  "name": "pigeon",
-  "version": "1.1.0",
+  "name": "@tlianza/pigeon",
+  "version": "1.2.0",
   "description": "Sentry Client for Cloudflare workers",
   "main": "index.js",
   "types": "index.d.ts",
@@ -35,5 +35,15 @@
     "@sentry/types": "^5.5.0",
     "@sentry/utils": "^5.5.0",
     "stack-trace": "0.0.10"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/tlianza/pigeon/issues"
+  },
+  "homepage": "https://github.com/tlianza/pigeon#readme",
+  "keywords": [
+    "cloudflare",
+    "workers",
+    "sentry",
+    "javascript"
+  ]
 }
