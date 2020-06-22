@@ -1,12 +1,12 @@
-import PigeonBackend from './pigeon-backend'
-import { getCurrentHub, initAndBind, BaseClient } from '@sentry/core';
-import { Request } from '@sentry/types';
+const PigeonBackend = require('./pigeon-backend')
+const { getCurrentHub, initAndBind, BaseClient } = require('@sentry/core')
+const { Request } = require('@sentry/types')
 
-export const SDK_NAME = 'cf-workers';
-export const SDK_VERSION = '0.0.1';
+const SDK_NAME = 'cf-workers';
+const SDK_VERSION = '0.0.1';
 
 
-export function init(options){
+function init(options){
     initAndBind(PigeonClient, options);
 }
 
@@ -16,7 +16,7 @@ export function init(options){
  *
  * @param timeout Maximum time in ms the client should wait.
  */
-export function flush(timeout) {
+function flush(timeout) {
     const client = getCurrentHub().getClient();
     if (client) {
         return client.flush(timeout);
@@ -30,7 +30,7 @@ export function flush(timeout) {
  *
  * @param timeout Maximum time in ms the client should wait.
  */
-export function close(timeout) {
+function close(timeout) {
     const client = getCurrentHub().getClient();
     if (client) {
         return client.close(timeout);
@@ -76,3 +76,10 @@ class PigeonClient extends BaseClient {
     }
 }
 
+module.exports = {
+    close,
+    flush,
+    init,
+    SDK_NAME,
+    SDK_VERSION,
+}

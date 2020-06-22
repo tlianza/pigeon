@@ -1,6 +1,6 @@
-export { init, close, flush } from './cf-workers-sentry';
+const { init, close, flush } = require('./cf-workers-sentry')
 
-export {
+const {
     addGlobalEventProcessor,
     addBreadcrumb,
     captureException,
@@ -19,4 +19,26 @@ export {
     setUser,
     Span,
     withScope,
-} from '@sentry/core';
+} = require('@sentry/core')
+
+module.exports = {
+    init, close, flush,
+    addGlobalEventProcessor,
+    addBreadcrumb,
+    captureException,
+    captureEvent,
+    captureMessage,
+    configureScope,
+    getHubFromCarrier,
+    getCurrentHub,
+    Hub,
+    Scope,
+    setContext,
+    setExtra,
+    setExtras,
+    setTag,
+    setTags,
+    setUser,
+    Span,
+    withScope,
+}

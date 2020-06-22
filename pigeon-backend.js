@@ -1,15 +1,15 @@
-import {BaseBackend, getCurrentHub, API} from "@sentry/core";
-import {
+const {BaseBackend, getCurrentHub, API} = require("@sentry/core")
+const {
     addExceptionTypeValue,
     isError,
     isPlainObject,
     keysToEventMessage,
     normalizeToSize,
     SyncPromise
-} from "@sentry/utils";
+} = require("@sentry/utils")
 
-import { StackFrame, Status } from "@sentry/types"
-import * as stacktrace from 'stack-trace'
+const { StackFrame, Status } = require("@sentry/types")
+const stacktrace = require('stack-trace')
 
 
 // Use fetch in dev, not required in prod where workers provides it
@@ -268,4 +268,4 @@ class PigeonTransport {
     }
 }
 
-export default PigeonBackend
+module.exports = PigeonBackend
