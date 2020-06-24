@@ -230,11 +230,15 @@ class PigeonBackend extends BaseBackend {
 class PigeonTransport {
 
     constructor(options) {
+        const api = new API(options.dsn);
         this.sdk_name = options.sdk_name;
         this.sdk_version = options.sdk_version;
         this.workers_event = options.workers_event;
-        this.url = new API(options.dsn).getStoreEndpointWithUrlEncodedAuth();
-	this.headers = options.headers || {}
+        this.url = api.getStoreEndpoint();
+        this.headers = Object.assign(
+            api.getRequestHeaders(this.sdk_name, this.sdk_version),
+            options.headers,
+        );
     }
 
     //sendEvent(event: Event): Promise<Response>;
