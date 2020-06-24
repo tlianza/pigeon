@@ -40,7 +40,16 @@ function close(timeout) {
 
 class PigeonClient extends BaseClient {
     constructor(options) {
-        super(PigeonBackend, {...options, transportOptions:{sdk_name:SDK_NAME, sdk_version:SDK_VERSION, workers_event:options.event}});
+        super(
+	    PigeonBackend,
+	    {
+                ...options,
+		transportOptions: Object.assign(
+		    {sdk_name:SDK_NAME, sdk_version:SDK_VERSION, workers_event:options.event},
+		    options.transportOptions,
+		),
+	    }
+        );
     }
 
     /**

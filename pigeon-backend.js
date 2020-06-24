@@ -234,6 +234,7 @@ class PigeonTransport {
         this.sdk_version = options.sdk_version;
         this.workers_event = options.workers_event;
         this.url = new API(options.dsn).getStoreEndpointWithUrlEncodedAuth();
+	this.headers = options.headers || {}
     }
 
     //sendEvent(event: Event): Promise<Response>;
@@ -242,7 +243,8 @@ class PigeonTransport {
             body: JSON.stringify(event),
             method: 'POST',
             headers: {
-                "User-Agent": `${this.sdk_name}/${this.sdk_version}`
+                "User-Agent": `${this.sdk_name}/${this.sdk_version}`,
+		...this.headers,
             }
         };
 
