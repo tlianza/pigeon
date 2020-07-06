@@ -1,3 +1,9 @@
+## WARNING: Check out 'Toucan' instead!
+The fundamental design of this project, Pigeon, has problems at scale due to the nature of the 
+Workers runtime and Sentry library design. A colleague of mine went on to tackle this problem 
+in a more scalable way with Toucan, which you should check out instead: 
+https://github.com/robertcepa/toucan-js
+
 ## Sentry Client for Cloudflare Workers
 
 This client attempts to adhere to the [Sentry SDK Guidelines](https://docs.sentry.io/development/sdk-dev/)
