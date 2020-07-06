@@ -1,15 +1,15 @@
-import {BaseBackend, getCurrentHub, API} from "@sentry/core";
-import {
+const {BaseBackend, getCurrentHub, API} = require("@sentry/core")
+const {
     addExceptionTypeValue,
     isError,
     isPlainObject,
     keysToEventMessage,
     normalizeToSize,
     SyncPromise
-} from "@sentry/utils";
+} = require("@sentry/utils")
 
-import { StackFrame, Status } from "@sentry/types"
-import * as stacktrace from 'stack-trace'
+const { StackFrame, Status } = require("@sentry/types")
+const stacktrace = require('stack-trace')
 
 
 // Use fetch in dev, not required in prod where workers provides it
@@ -230,10 +230,15 @@ class PigeonBackend extends BaseBackend {
 class PigeonTransport {
 
     constructor(options) {
+        const api = new API(options.dsn);
         this.sdk_name = options.sdk_name;
         this.sdk_version = options.sdk_version;
         this.workers_event = options.workers_event;
-        this.url = new API(options.dsn).getStoreEndpointWithUrlEncodedAuth();
+        this.url = api.getStoreEndpoint();
+        this.headers = Object.assign(
+            api.getRequestHeaders(this.sdk_name, this.sdk_version),
+            options.headers,
+        );
     }
 
     //sendEvent(event: Event): Promise<Response>;
@@ -242,7 +247,8 @@ class PigeonTransport {
             body: JSON.stringify(event),
             method: 'POST',
             headers: {
-                "User-Agent": `${this.sdk_name}/${this.sdk_version}`
+                "User-Agent": `${this.sdk_name}/${this.sdk_version}`,
+		...this.headers,
             }
         };
 
@@ -268,4 +274,4 @@ class PigeonTransport {
     }
 }
 
-export default PigeonBackend
+module.exports = PigeonBackend
