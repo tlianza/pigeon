@@ -19,7 +19,7 @@
     "@babel/preset-env": "^7.5.0",
     "@babel/register": "^7.4.4",
     "chai": "^4.2.0",
-    "mocha": "^6.1.4",
+    "mocha": "^10.2.0",
     "node-fetch": "^2.6.0",
     "regenerator-runtime": "^0.13.2"
   },
